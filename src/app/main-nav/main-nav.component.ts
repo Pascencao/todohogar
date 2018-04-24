@@ -9,28 +9,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent implements OnInit {
-  site: {site_name: ''};
+  site: { site_name: '' };
   isLoggedin: boolean = this.auth.authenticated();
-  
+
   constructor(
     private mainConfigSrv: MainConfigService,
     private auth: AuthService,
     private router: Router
   ) { }
-  
+
   ngOnInit() {
     this.getConfig();
   }
-  ngDoCheck(){
+
+  ngDoCheck() {
     this.isLoggedin = this.auth.authenticated();
   }
+
   getConfig(): any {
-    this.mainConfigSrv.getConfigs().subscribe((config:any) => {
+    this.mainConfigSrv.getConfigs().subscribe((config: any) => {
       this.site = config;
-    })
+    });
   }
-  logout(){
-    this.auth.signOut()
+  logout() {
+    this.auth.signOut();
     this.router.navigate(['index']);
   }
 } 

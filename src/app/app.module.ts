@@ -19,6 +19,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ConfigComponent } from './config/config.component';
+import { EditCreatePromoComponent } from './edit-create-promo/edit-create-promo.component';
+import { PromosService } from './services/promos.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ConfigComponent } from './config/config.component';
     MainNavComponent,
     LoginComponent,
     DashboardComponent,
-    ConfigComponent
+    ConfigComponent,
+    EditCreatePromoComponent
   ],
   exports: [
     RouterModule
@@ -44,6 +47,7 @@ import { ConfigComponent } from './config/config.component';
   providers: [
     AuthService,
     ProductsService,
+    PromosService,
     MainConfigService
   ],
   bootstrap: [AppComponent]
