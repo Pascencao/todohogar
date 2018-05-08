@@ -1,7 +1,11 @@
 <ngb-tabset>
   <ngb-tab title="Promos">
     <ng-template ngbTabContent>
-      <app-edit-create-promo></app-edit-create-promo>
+      <div class="promo-wrapper">
+        <app-edit-create-promo *ngIf="addNew" (saved)="promoSaved()"></app-edit-create-promo>
+        <button *ngIf="!addNew" (click)="addNew = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
+        <app-promo-config-item *ngFor="let promo of promos" [promo]="promo"></app-promo-config-item>
+      </div>
     </ng-template>
   </ngb-tab>
   <ngb-tab>

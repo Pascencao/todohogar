@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { firebaseConfig } from './firebaseConfig.constant';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +22,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ConfigComponent } from './config/config.component';
 import { EditCreatePromoComponent } from './edit-create-promo/edit-create-promo.component';
 import { PromosService } from './services/promos.service';
+import { PromoConfigItemComponent } from './promo-config-item/promo-config-item.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { PromosService } from './services/promos.service';
     LoginComponent,
     DashboardComponent,
     ConfigComponent,
-    EditCreatePromoComponent
+    EditCreatePromoComponent,
+    PromoConfigItemComponent
   ],
   exports: [
     RouterModule
@@ -42,6 +45,7 @@ import { PromosService } from './services/promos.service';
     Angular2FontawesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AngularFireAuthModule
   ],
   providers: [
@@ -53,7 +57,7 @@ import { PromosService } from './services/promos.service';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-/* 
+/*
 <!-- Component -->
 <fa [name]=string      // name of fontawesome icon
     [size]=number      // [1-5]
@@ -65,5 +69,4 @@ export class AppModule { }
     [fw]=boolean       // [true|false]
     [inverse]=boolean  // [true|false]
     ></fa>
-    
 */
