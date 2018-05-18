@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { MainConfigService } from '../services/main-config.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-main-nav',
   templateUrl: './main-nav.component.html',
-  styleUrls: ['./main-nav.component.css']
+  styleUrls: ['./main-nav.component.scss']
 })
-export class MainNavComponent implements OnInit {
+export class MainNavComponent implements OnInit, DoCheck {
   site: { site_name: '' };
   isLoggedin: boolean = this.auth.authenticated();
 
@@ -35,4 +35,4 @@ export class MainNavComponent implements OnInit {
     this.auth.signOut();
     this.router.navigate(['index']);
   }
-} 
+}

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-edit-create-promo',
   templateUrl: './edit-create-promo.component.html',
-  styleUrls: ['./edit-create-promo.component.css']
+  styleUrls: ['./edit-create-promo.component.scss']
 })
 export class EditCreatePromoComponent implements OnInit {
   @ViewChild('fileInput') fileInput;

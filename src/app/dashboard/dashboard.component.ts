@@ -5,7 +5,7 @@ import { MainConfigService } from '../services/main-config.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
 
@@ -15,14 +15,14 @@ export class DashboardComponent implements OnInit {
   ) { }
   promos: any;
   site: any;
-  
+
   ngOnInit() {
     this.productSrv.getPromos().subscribe(res => {
       this.promos = res;
     });
-    this.mainConfigSrv.getConfigs().subscribe((config:any) => {
+    this.mainConfigSrv.getConfigs().subscribe((config: any) => {
       this.site = config;
-    })
+    });
   }
 
 }

@@ -2,21 +2,18 @@
   <ngb-tab title="Promos">
     <ng-template ngbTabContent>
       <div class="promo-wrapper">
-        <app-edit-create-promo *ngIf="addNew" (saved)="promoSaved()"></app-edit-create-promo>
-        <button *ngIf="!addNew" (click)="addNew = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
+        <app-edit-create-promo *ngIf="addNewPromo" (saved)="promoSaved()"></app-edit-create-promo>
+        <button *ngIf="!addNewPromo" (click)="addNewPromo = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
         <app-promo-config-item *ngFor="let promo of promos" [promo]="promo"></app-promo-config-item>
       </div>
     </ng-template>
   </ngb-tab>
-  <ngb-tab>
-    <ng-template ngbTabTitle><b>Fancy</b> title</ng-template>
-    <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-      <p>Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-      craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl
-      cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia
-      yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean
-      shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero
-      sint qui sapiente accusamus tattooed echo park.</p>
+  <ngb-tab title="Productos">
+    <ng-template ngbTabContent>
+      <div class="promo-wrapper">
+        <app-edit-create-product *ngIf="addNewProduct" (saved)="promoSaved()"></app-edit-create-product>
+        <button *ngIf="!addNewProduct" (click)="addNewProduct = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
+      </div>
     </ng-template>
   </ngb-tab>
 </ngb-tabset>

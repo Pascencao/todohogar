@@ -23,6 +23,8 @@ import { ConfigComponent } from './config/config.component';
 import { EditCreatePromoComponent } from './edit-create-promo/edit-create-promo.component';
 import { PromosService } from './services/promos.service';
 import { PromoConfigItemComponent } from './promo-config-item/promo-config-item.component';
+import { EditCreateProductComponent } from './edit-create-product/edit-create-product.component';
+import { ProductConfigItemComponent } from './product-config-item/product-config-item.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { PromoConfigItemComponent } from './promo-config-item/promo-config-item.
     DashboardComponent,
     ConfigComponent,
     EditCreatePromoComponent,
-    PromoConfigItemComponent
+    PromoConfigItemComponent,
+    EditCreateProductComponent,
+    ProductConfigItemComponent
   ],
   exports: [
     RouterModule

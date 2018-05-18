@@ -5,8 +5,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   constructor(
@@ -19,10 +20,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  submit(){
+  submit() {
     this.auth.emailLogin(this.username, this.password).then(res => {
-      console.log(this.auth.authState)
-      this.router.navigate(['auth','config']);
-    })
+      this.router.navigate(['auth', 'config']);
+    });
   }
 }

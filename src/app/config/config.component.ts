@@ -5,11 +5,13 @@ import { AngularFireStorage } from 'angularfire2/storage';
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
-  styleUrls: ['./config.component.css']
+  styleUrls: ['./config.component.scss']
 })
 export class ConfigComponent implements OnInit {
   promos: [any];
-  addNew: Boolean = false;
+  products: [any];
+  addNewPromo: Boolean = false;
+  addNewProduct: Boolean = false;
 
   constructor(
     private mainConfigSrv: MainConfigService,
@@ -23,25 +25,28 @@ export class ConfigComponent implements OnInit {
     this.getPromos();
   }
   promoSaved() {
-    this.addNew = false;
-    this.getConfig();
+    this.addNewPromo = false;
+    this.getPromos();
+  }
+  productSaved() {
+    this.addNewProduct = false;
+    this.getProducts();
   }
   getConfig() {
     return this.mainConfigSrv.getConfigs().subscribe();
   }
+  getProducts() {
+    return this.mainConfigSrv.getProducts().subscribe(prods => {
+      this.products = prods;
+      console.log(prods);
+      this.addNewProduct = !prods.length;
+    });
+  }
   getPromos() {
     return this.mainConfigSrv.getPromos()
-      .map((promos: any) => {
-        promos.map(promo => {
-          const ref = this.storage.ref(promo.image);
-          promo.image = ref.getDownloadURL();
-          return promo;
-        });
-        console.log(promos);
-        return promos;
-      }).subscribe(promos => {
+    .subscribe(promos => {
       this.promos = promos;
-      this.addNew = !promos.length;
+      this.addNewPromo = !promos.length;
     });
   }
 }
