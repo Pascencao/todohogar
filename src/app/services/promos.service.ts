@@ -7,7 +7,7 @@ export class PromosService {
   constructor(private db: AngularFireDatabase) { }
 
   getPromos() {
-    return this.db.object('/promos').valueChanges();
+    return this.db.list('/promos').valueChanges();
   }
   getPromoById() {
     return this.db.object('/promos/2').valueChanges();

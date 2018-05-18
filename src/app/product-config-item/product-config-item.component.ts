@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-product-config-item',
@@ -13,9 +14,15 @@ export class ProductConfigItemComponent implements OnInit {
     image: string,
     labels: [string],
   };
-  constructor() { }
+  constructor(private storage: AngularFireStorage) {
+  }
 
   ngOnInit() {
+    const ref = this.storage.ref(this.product.image);
+    ref.getDownloadURL().subscribe(image => {
+      this.product.image = image;
+    });
+    // console.log(this.promo.image);
   }
 
 }

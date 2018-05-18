@@ -8,11 +8,9 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class AppComponent {
-  constructor( 
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    
   }
 
 }

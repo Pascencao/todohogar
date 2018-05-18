@@ -11,8 +11,9 @@
   <ngb-tab title="Productos">
     <ng-template ngbTabContent>
       <div class="promo-wrapper">
-        <app-edit-create-product *ngIf="addNewProduct" (saved)="promoSaved()"></app-edit-create-product>
+        <app-edit-create-product *ngIf="addNewProduct" (saved)="productSaved()"></app-edit-create-product>
         <button *ngIf="!addNewProduct" (click)="addNewProduct = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
+        <app-product-config-item *ngFor="let product of products" [product]="product" ></app-product-config-item>
       </div>
     </ng-template>
   </ngb-tab>

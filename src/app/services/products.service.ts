@@ -6,8 +6,10 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class ProductsService {
 
   constructor(private db: AngularFireDatabase) { }
-  getPromos(): Observable<any[]> {
-    return this.db.list('/promos').valueChanges();
-    
+  getProducts(): Observable<any[]> {
+    return this.db.list('/products').valueChanges();
+  }
+  addProduct(prod) {
+    return this.db.list('/products').push(prod);
   }
 }

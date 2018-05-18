@@ -1,7 +1,7 @@
 <div class="row promo-item">
   <img class="col-3" [src]="promo.image" alt="">
   <div class="col-9">
-    <h5>{{promo.title}} - {{promo.price}}</h5>
+    <h5>{{promo.title}} - {{promo.price| currency}}</h5>
     <p>{{promo.description}}</p>
   </div>
 </div>

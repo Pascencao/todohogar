@@ -23,6 +23,7 @@ export class ConfigComponent implements OnInit {
   ngOnInit() {
     this.getConfig();
     this.getPromos();
+    this.getProducts();
   }
   promoSaved() {
     this.addNewPromo = false;

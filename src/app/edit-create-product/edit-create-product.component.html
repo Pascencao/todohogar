@@ -1,3 +1,32 @@
-<p>
-  edit-create-product works!
-</p>
+<form name="newProduct" (ngSubmit)="submit()" #promoForm="ngForm">
+  <div class="row">
+    <div class="col img-wrapper">
+      <img [src]="downloadURL | async" alt="">
+    </div>
+    <div class="form-group col-9">
+      <label for="image">Agregue una imagen del producto</label>
+      <input type="file" class="form-control-file" (change)="upload($event)" #fileInput [(ngModel)]="image" id="image" name="image">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="title">Nombre</label>
+    <input type="text" class="form-control" id="title" required name="title" [(ngModel)]="title" aria-describedby="Titulo de la promo">
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description" aria-describedby="Descripcion de la promo">
+  </div>
+  <div class="form-group">
+    <label for="price">Precio</label>
+    <input type="text" class="form-control" id="price" name="price" [(ngModel)]="price" aria-describedby="Precio de la promo">
+  </div>
+  <div class="form-group row">
+    <label for="labels" class="col-12">Etiquetas</label>
+    <input type="text" class="col-9 form-control" id="labels" name="labels" [(ngModel)]="labels" aria-describedby="Etiquetas">
+    <button type="button" class="col-3 btn btn-default" (click)="addLabel()">Agregar</button>
+    <div class="pills-wrapper" *ngIf="labelsList.length">
+      <span *ngFor="let lab of labelsList" class="pills">{{lab}}</span>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!promoForm.form.valid || promoForm.pristine || !downloadURL">Submit</button>
+</form>
