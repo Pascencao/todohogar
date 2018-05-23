@@ -18,8 +18,6 @@ export class ConfigComponent implements OnInit {
     private storage: AngularFireStorage
   ) { }
 
-  // ngDoCheck(){
-  // }
   ngOnInit() {
     this.getConfig();
     this.getPromos();
