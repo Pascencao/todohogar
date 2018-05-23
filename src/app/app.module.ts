@@ -26,6 +26,8 @@ import { PromoConfigItemComponent } from './promo-config-item/promo-config-item.
 import { EditCreateProductComponent } from './edit-create-product/edit-create-product.component';
 import { ProductConfigItemComponent } from './product-config-item/product-config-item.component';
 import { PromoCarouselComponent } from './promo-carousel/promo-carousel.component';
+import { FiltersComponent } from './filters/filters.component';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { PromoCarouselComponent } from './promo-carousel/promo-carousel.componen
     PromoConfigItemComponent,
     EditCreateProductComponent,
     ProductConfigItemComponent,
-    PromoCarouselComponent
+    PromoCarouselComponent,
+    FiltersComponent,
+    ProductItemComponent
   ],
   exports: [
     RouterModule

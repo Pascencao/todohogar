@@ -5,6 +5,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a routerLink="auth/config" *ngIf="isLoggedin">
+          Configurar Sitio
+        </a>
         <a *ngIf="!isLoggedin" routerLink="auth/login">
           <fa [name]="'lock'" [size]="1" [pull]="right"></fa>
         </a>

@@ -1,0 +1,15 @@
+<article class="card">
+  <img class="card-img-top" [src]="product.image" alt="">
+  <div class="card-body">
+    <h4>{{product.title}}</h4>
+    <span class="price" *ngIf="product.price">{{product.price | currency}}</span>
+    <p>
+      <span class="badge badge-secondary" *ngFor="let lab of product.labels">{{lab}}</span>
+    </p>
+  </div>
+  <span class="discount" *ngIf="product.discount">
+    <span class="content">
+      {{product.discount}}% <br>OFF
+    </span>
+  </span>
+</article>

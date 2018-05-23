@@ -6,7 +6,21 @@
         <h3>{{promo.title}} - {{promo.price | currency}}</h3>
         <p *ngIf="promo.description">{{promo.description}}</p>
       </div>
-      
+
     </ng-template>
   </ngb-carousel>
+  <section class="products row">
+    <app-filters 
+      (filterProductsByQuery)="filterProductsListByQuery($event)" 
+      (filterProductsByLabels)="filterProductsListByLabels($event)" 
+      class="filters-wrapper col-3" [labels]="labelsList"></app-filters>
+    <div class="products-list col-9">
+      <div class="row" *ngIf="filtredProducts.length">
+        <app-product-item class="col-4" [product]="product" *ngFor="let product of filtredProducts"></app-product-item>
+      </div>
+      <div class="row" *ngIf="!filtredProducts.length">
+        <h3>No se encontraron productos con ese criterio de busqueda</h3>
+      </div>      
+    </div>
+  </section>
 </div>
