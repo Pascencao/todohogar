@@ -9,6 +9,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
 export class ProductConfigItemComponent implements OnInit {
   @Input() product: {
     name: string,
+    title: string,
     description: string,
     price: string,
     image: string,
