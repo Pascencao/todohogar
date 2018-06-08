@@ -11,12 +11,15 @@ import { Observable } from 'rxjs/Observable';
 export class EditCreatePromoComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   @Output() saved = new EventEmitter();
+
   uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
   title: string;
   description: string;
   price: string;
   filePath: string;
+  image: string;
+
   constructor(private promoSrv: PromosService, private storage: AngularFireStorage) { }
 
   ngOnInit() {
