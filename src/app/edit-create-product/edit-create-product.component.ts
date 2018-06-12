@@ -16,6 +16,7 @@ export class EditCreateProductComponent implements OnInit {
   title: string;
   description: string;
   price: string;
+  image: string;
   uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
   labelsList = [];
