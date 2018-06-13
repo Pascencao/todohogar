@@ -1,20 +1,28 @@
-<ngb-tabset>
-  <ngb-tab title="Promos">
-    <ng-template ngbTabContent>
-      <div class="promo-wrapper">
-        <app-edit-create-promo *ngIf="addNewPromo" (saved)="promoSaved()"></app-edit-create-promo>
-        <button *ngIf="!addNewPromo" (click)="addNewPromo = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
-        <app-promo-config-item *ngFor="let promo of promos" [promo]="promo"></app-promo-config-item>
-      </div>
-    </ng-template>
-  </ngb-tab>
-  <ngb-tab title="Productos">
-    <ng-template ngbTabContent>
-      <div class="promo-wrapper">
-        <app-edit-create-product *ngIf="addNewProduct" (saved)="productSaved()"></app-edit-create-product>
-        <button *ngIf="!addNewProduct" (click)="addNewProduct = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
-        <app-product-config-item *ngFor="let product of products" [product]="product" ></app-product-config-item>
-      </div>
-    </ng-template>
-  </ngb-tab>
-</ngb-tabset>
+<section class="main-content">
+  <ngb-tabset>
+    <ngb-tab title="Principal">
+      <ng-template ngbTabContent>
+        <app-main-config></app-main-config>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Promos">
+      <ng-template ngbTabContent>
+        <div class="promo-wrapper">
+          <app-edit-create-promo *ngIf="addNewPromo" (saved)="promoSaved()"></app-edit-create-promo>
+          <button *ngIf="!addNewPromo" (click)="addNewPromo = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
+          <app-promo-config-item *ngFor="let promo of promos" [promo]="promo"></app-promo-config-item>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Productos">
+      <ng-template ngbTabContent>
+        <div class="promo-wrapper">
+          <app-edit-create-product *ngIf="addNewProduct" (saved)="productSaved()"></app-edit-create-product>
+          <button *ngIf="!addNewProduct" (click)="addNewProduct = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
+          <app-product-config-item *ngFor="let product of products" [product]="product" ></app-product-config-item>
+        </div>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+
+</section>

@@ -1,7 +1,7 @@
 <div class="row">
   <img class="col-3" [src]="product.image" alt="">
   <div class="col-9">
-    <h4>{{product.title}} - {{product.price | currency}}</h4>
+    <h4>{{product.title}} - {{product.price | currency}} - {{product.discount}}</h4>
     <p>{{product.description}}</p>
     <div class="pills-wrapper">
       <span class="pill" *ngFor="let lab of product.labels">

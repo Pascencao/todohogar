@@ -1,10 +1,10 @@
 <header class="main-nav">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" routerLink="index">{{site}}</a>
+  <nav class="navbar navbar-expand-lg navbar-light" [ngStyle]="{'background-color': site.theme }">
+      <a *ngIf="site.site_name" class="navbar-brand" routerLink="index">{{site.site_name}}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse pull-right" id="navbarSupportedContent">
         <a routerLink="auth/config" *ngIf="isLoggedin">
           Configurar Sitio
         </a>

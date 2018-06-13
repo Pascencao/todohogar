@@ -20,6 +20,7 @@ export class EditCreateProductComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
   labelsList = [];
+  discount: String;
 
   constructor(private storage: AngularFireStorage, private prodSrv: ProductsService) { }
 
@@ -37,7 +38,9 @@ export class EditCreateProductComponent implements OnInit {
       description: this.description,
       price: this.price,
       image: this.filePath,
-      labels: this.labelsList
+      labels: this.labelsList,
+      discount: this.discount
+
     });
 
     this.saved.emit();

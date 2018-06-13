@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent implements OnInit, DoCheck {
-  site: { site_name: '' };
+  site: { site_name: String, email: String, theme: String } = { site_name: '', email: '', theme: '#cccccc' };
   isLoggedin: boolean = this.auth.authenticated();
 
   constructor(
@@ -29,6 +29,7 @@ export class MainNavComponent implements OnInit, DoCheck {
   getConfig(): any {
     this.mainConfigSrv.getConfigs().subscribe((config: any) => {
       this.site = config;
+      this.site.theme = this.site.theme || '#cccccc';
     });
   }
   logout() {

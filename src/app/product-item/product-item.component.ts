@@ -24,7 +24,6 @@ export class ProductItemComponent implements OnInit {
     ref.getDownloadURL().subscribe(image => {
       this.product.image = image;
     });
-    this.product.discount = 15;
   }
 
 }

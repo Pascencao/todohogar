@@ -14,24 +14,23 @@ export class EditCreatePromoComponent implements OnInit {
 
   uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
-  title: string;
-  description: string;
-  price: string;
+  title: String;
+  description: String;
+  price: String;
   filePath: string;
-  image: string;
+  image: String;
 
   constructor(private promoSrv: PromosService, private storage: AngularFireStorage) { }
 
   ngOnInit() {
   }
   submit() {
-    console.log('submitting');
     // do stuff w/my uploaded file
     this.promoSrv.addPromo({
       title: this.title,
       description: this.description,
       price: this.price,
-      image: this.filePath
+      image: this.filePath,
     });
     this.saved.emit();
   }

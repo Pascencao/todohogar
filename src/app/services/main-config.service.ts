@@ -8,12 +8,15 @@ export class MainConfigService {
   constructor(private db: AngularFireDatabase) { }
 
   getConfigs(): Observable<any> {
-    return this.db.list('/config').valueChanges();
+    return this.db.object('/config').valueChanges();
   }
   getPromos(): Observable<any> {
     return this.db.list('/promos').valueChanges();
   }
   getProducts(): Observable<any> {
     return this.db.list('/products').valueChanges();
+  }
+  updateConfigs(data) {
+    return this.db.object('/config').update(data);
   }
 }

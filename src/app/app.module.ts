@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -28,6 +28,8 @@ import { ProductConfigItemComponent } from './product-config-item/product-config
 import { PromoCarouselComponent } from './promo-carousel/promo-carousel.component';
 import { FiltersComponent } from './filters/filters.component';
 import { ProductItemComponent } from './product-item/product-item.component';
+import { MainConfigComponent } from './main-config/main-config.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ProductItemComponent } from './product-item/product-item.component';
     ProductConfigItemComponent,
     PromoCarouselComponent,
     FiltersComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    MainConfigComponent
   ],
   exports: [
     RouterModule
@@ -56,13 +59,17 @@ import { ProductItemComponent } from './product-item/product-item.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ColorPickerModule
   ],
   providers: [
     AuthService,
     ProductsService,
     PromosService,
     MainConfigService
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   bootstrap: [AppComponent]
 })
