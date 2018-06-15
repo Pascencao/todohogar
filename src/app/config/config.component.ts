@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainConfigService } from '../services/main-config.service';
 import { AngularFireStorage } from 'angularfire2/storage';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-config',
@@ -8,8 +9,9 @@ import { AngularFireStorage } from 'angularfire2/storage';
   styleUrls: ['./config.component.scss']
 })
 export class ConfigComponent implements OnInit {
-  promos: [any];
-  products: [any];
+  promos: any[];
+  products: any[];
+  editingProduct: any;
   addNewPromo: Boolean = false;
   addNewProduct: Boolean = false;
 
@@ -35,9 +37,19 @@ export class ConfigComponent implements OnInit {
     return this.mainConfigSrv.getConfigs().subscribe();
   }
   getProducts() {
-    return this.mainConfigSrv.getProducts().subscribe(prods => {
+    return this.mainConfigSrv.getProducts()
+    .map(prods => {
+      const prodList = [];
+      _.forEach(prods, (val, key) => {
+        val['id'] = key;
+        prodList.push(val);
+      });
+
+      // console.log(prodList);
+      return prodList;
+    })
+    .subscribe(prods => {
       this.products = prods;
-      console.log(prods);
       this.addNewProduct = !prods.length;
     });
   }
@@ -47,5 +59,13 @@ export class ConfigComponent implements OnInit {
       this.promos = promos;
       this.addNewPromo = !promos.length;
     });
+  }
+  cancelEdit(){
+    this.addNewProduct = false;
+    this.editingProduct = null;
+  }
+  editProduct(prod) {
+    this.editingProduct = prod;
+    this.addNewProduct = true;
   }
 }

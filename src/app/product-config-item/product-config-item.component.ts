@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
@@ -7,10 +7,13 @@ import { AngularFireStorage } from 'angularfire2/storage';
   styleUrls: ['./product-config-item.component.scss']
 })
 export class ProductConfigItemComponent implements OnInit {
+  @Output() edit = new EventEmitter();
   @Input() product: {
+    id: string,
     name: string,
     title: string,
     description: string,
+    shortDescription: string,
     price: string,
     image: string,
     labels: [string],
@@ -19,11 +22,14 @@ export class ProductConfigItemComponent implements OnInit {
   }
 
   ngOnInit() {
+
     const ref = this.storage.ref(this.product.image);
     ref.getDownloadURL().subscribe(image => {
       this.product.image = image;
     });
-    // console.log(this.promo.image);
+  }
+  editItem () {
+    this.edit.emit();
   }
 
 }

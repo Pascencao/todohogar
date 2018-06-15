@@ -12,4 +12,7 @@ export class ProductsService {
   addProduct(prod) {
     return this.db.list('/products').push(prod);
   }
+  updateProduct(prod) {
+    return this.db.object(`/products/${prod.id}`).update(prod);
+  }
 }

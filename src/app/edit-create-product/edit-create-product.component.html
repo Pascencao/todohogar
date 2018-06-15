@@ -15,7 +15,11 @@
   </div>
   <div class="form-group">
     <label for="description">Descripción</label>
-    <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description" aria-describedby="Descripcion de la promo">
+    <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description" maxlength="500" aria-describedby="Descripcion de la promo">
+  </div>
+  <div class="form-group">
+    <label for="shortDescription">Descripción</label>
+    <input type="text" class="form-control" id="shortDescription" name="shortDescription" [(ngModel)]="shortDescription" maxlength="140" aria-describedby="Descripcion de la promo">
   </div>
   <div class="form-group">
     <label for="price">Precio</label>
@@ -34,4 +38,5 @@
     </div>
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="!promoForm.form.valid || promoForm.pristine || !downloadURL">Submit</button>
+  <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
 </form>
