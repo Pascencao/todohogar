@@ -2,7 +2,7 @@
   <button class="edit btn btn-outline-dark" (click)="editItem()"><fa name="edit" [size]="1"></fa></button>
   <img class="card-img-top" [src]="product.image" alt="">
   <div class="card-body">
-    <h4 class="card-title">{{product.title}} - {{product.price | currency}} {{product.discount ? ' - ' + product.discount+ '%' : '' }}</h4>
+    <h4 class="card-title">{{product.title}} - {{product.price | currency}} {{product.discount ? ' - ' + product.discount + '%' : '' }}</h4>
     <p class="card-text">{{product.shortDescription}}</p>
     <div class="pills-wrapper">
       <span class="pill" *ngFor="let lab of product.labels">
