@@ -28,6 +28,7 @@ export class MainNavComponent implements OnInit, DoCheck {
 
   getConfig(): any {
     this.mainConfigSrv.getConfigs().subscribe((config: any) => {
+      console.log(config)
       this.site = config;
       this.site.theme = this.site.theme || '#cccccc';
     });

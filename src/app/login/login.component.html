@@ -1,11 +1,21 @@
 <div class="login-wrapper">
   <form name="login">
     <div class="input-group mb-3">
-      <input type="text" name="username" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="username">
+      <label for="username" class="col-12">
+        Usuario:
+        <input type="text" name="username" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="username">
+      </label>
     </div>
     <div class="input-group mb-3">
-      <input type="password" name="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="password">
+      <label for="password" class="col-12">
+        Contraseña:
+        <input type="password" name="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" [(ngModel)]="password">
+      </label>
     </div>
-    <button type="button" class="btn btn-light" (click)="submit()">Login</button>
+    <div class="col-12">
+      <button type="button" class="btn btn-primary pull-right" (click)="submit()">Entrar</button>
+      <a class="btn btn-link pull-right" routerLink="index">Volver</a>
+
+    </div>
   </form>
 </div>
