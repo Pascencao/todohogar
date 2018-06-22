@@ -1,16 +1,34 @@
 <header class="main-nav">
-  <nav class="navbar navbar-expand-lg navbar-light" [ngStyle]="{'background-color': site.theme }">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light" [ngStyle]="{'background-color': site.theme }">
       <a *ngIf="site.site_name" class="navbar-brand" routerLink="index">{{site.site_name}}</a>
       <div class="collapse navbar-collapse pull-right">
         <a routerLink="auth/config" class="configSite" *ngIf="isLoggedin">
           Configurar Sitio
         </a>
-        <a *ngIf="!isLoggedin" routerLink="auth/login">
-          <fa [name]="'lock'" [size]="1" [pull]="right"></fa>
-        </a>
-        <button *ngIf="isLoggedin" class="btn btn-link" type="button" (click)="logout()">
-          <fa [name]="'unlock'" [size]="1" [pull]="right"></fa>          
-        </button>
+        
       </div>
-    </nav>
+    </nav> -->
+    
+  <div class="top_bar">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-11">
+          <a *ngIf="site.site_name" class="navbar-brand" routerLink="index">{{site.site_name}}</a>
+        </div>
+        <div class="col-1">
+          <ul class="social">
+            <li>
+              <a *ngIf="!isLoggedin" routerLink="auth/login">
+                <fa [name]="'lock'" [size]="1" [pull]="right"></fa>
+              </a>
+              <button *ngIf="isLoggedin" class="btn btn-link" type="button" (click)="logout()">
+                <fa [name]="'unlock'" [size]="1" [pull]="right"></fa>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
