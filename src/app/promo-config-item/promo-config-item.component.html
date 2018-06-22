@@ -1,7 +1,8 @@
-<div class="row promo-item">
-  <img class="col-3" [src]="promo.image" alt="">
-  <div class="col-9">
-    <h5>{{promo.title}} - {{promo.price| currency}}</h5>
-    <p>{{promo.description}}</p>
+<div class="row promo-item card">
+  <button class="edit btn btn-outline-dark" (click)="editItem()"><fa name="edit" [size]="1"></fa></button>
+  <img class="card-img-top" [src]="promo.image" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{promo.title}} - {{promo.price| currency}}</h5>
+    <p class="card-text">{{promo.description}}</p>
   </div>
 </div>

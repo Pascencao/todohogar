@@ -1,10 +1,11 @@
 <form name="newPromo" (ngSubmit)="submit()" #promoForm="ngForm">
   <div class="row">
     <div class="col img-wrapper">
-      <img [src]="downloadURL | async" alt="" >
+      <img *ngIf="downloadURL && !filePath" [src]="downloadURL | async" alt="promo image" >
+      <img *ngIf="!downloadURL && filePath" [src]="filePath" alt="promo image">
     </div>
     <div class="form-group col-9">
-      <label for="image">Example file input</label>
+      <label for="image">Imagen de la Promo</label>
       <input type="file" class="form-control-file" (change)="upload($event)" #fileInput [(ngModel)]="image" id="image" name="image">
     </div>
   </div>
@@ -21,5 +22,6 @@
     <input type="text" class="form-control" id="price" name="price" [(ngModel)]="price" aria-describedby="Precio de la promo">
   </div>
   <div></div>
-  <button type="submit" class="btn btn-primary" [disabled]="!promoForm.form.valid || promoForm.pristine || !downloadURL">Submit</button>
+  <button type="submit" class="btn btn-primary pull-right" [disabled]="!promoForm.form.valid || promoForm.pristine || !downloadURL">Submit</button>
+  <button type="button" class="btn btn-default pull-right" (click)="cancel()">Cancelar</button>
 </form>

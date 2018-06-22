@@ -1,11 +1,22 @@
 .promo-item{
   margin: 15px 0;
-  padding: 15px ;
   background: #eee; 
+  position: relative;
   img{
     height: 100%;
   }
   h5{
     text-transform: capitalize;
+  }
+  .edit{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+  }
+  &:hover{
+    .edit{
+      display: block;
+    }
   }
 }

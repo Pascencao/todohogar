@@ -12,6 +12,7 @@ export class ConfigComponent implements OnInit {
   promos: any[];
   products: any[];
   editingProduct: any;
+  editingPromo: any;
   addNewPromo: Boolean = false;
   addNewProduct: Boolean = false;
 
@@ -38,16 +39,7 @@ export class ConfigComponent implements OnInit {
   }
   getProducts() {
     return this.mainConfigSrv.getProducts()
-    .map(prods => {
-      const prodList = [];
-      _.forEach(prods, (val, key) => {
-        val['id'] = key;
-        prodList.push(val);
-      });
-
-      // console.log(prodList);
-      return prodList;
-    })
+    .map(this.setId)
     .subscribe(prods => {
       this.products = prods;
       this.addNewProduct = !prods.length;
@@ -55,17 +47,32 @@ export class ConfigComponent implements OnInit {
   }
   getPromos() {
     return this.mainConfigSrv.getPromos()
+    .map(this.setId)
     .subscribe(promos => {
       this.promos = promos;
       this.addNewPromo = !promos.length;
     });
   }
-  cancelEdit(){
+  cancelEdit() {
     this.addNewProduct = false;
     this.editingProduct = null;
+    this.editingPromo = null;
+    this.addNewPromo = false;
   }
   editProduct(prod) {
     this.editingProduct = prod;
     this.addNewProduct = true;
+  }
+  editPromo(promo) {
+    this.editingPromo = promo;
+    this.addNewPromo = true;
+  }
+  setId (items) {
+    const newList = [];
+    _.forEach(items, (val, key) => {
+      val['id'] = key;
+      newList.push(val);
+    });
+    return newList;
   }
 }

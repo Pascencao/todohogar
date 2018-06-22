@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { PromosService } from '../services/promos.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
@@ -11,18 +11,34 @@ import { Observable } from 'rxjs/Observable';
 export class EditCreatePromoComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   @Output() saved = new EventEmitter();
-
+  @Output() cancelEv = new EventEmitter();
+  @Input() promo: {
+    id: string,
+    title: string,
+    description: string,
+    price: string,
+    image: string
+  };
   uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
-  title: String;
-  description: String;
-  price: String;
+  title: string;
+  description: string;
+  price: string;
   filePath: string;
-  image: String;
+  image: string;
+  isEditing: boolean;
 
   constructor(private promoSrv: PromosService, private storage: AngularFireStorage) { }
 
   ngOnInit() {
+    this.isEditing = !!(this.promo && this.promo.id);
+    console.log(this.promo);
+    if (this.isEditing) {
+      this.getImage();
+      this.title = this.promo.title;
+      this.description = this.promo.description;
+      this.price = this.promo.price;
+    }
   }
   submit() {
     // do stuff w/my uploaded file
@@ -33,6 +49,15 @@ export class EditCreatePromoComponent implements OnInit {
       image: this.filePath,
     });
     this.saved.emit();
+  }
+  cancel() {
+    this.cancelEv.emit();
+  }
+  getImage() {
+    const ref = this.storage.ref(this.promo.image);
+    ref.getDownloadURL().subscribe(image => {
+      this.filePath = image;
+    });
   }
   upload(event) {
     const file = event.target.files[0];

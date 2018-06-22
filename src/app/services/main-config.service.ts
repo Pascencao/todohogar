@@ -11,7 +11,7 @@ export class MainConfigService {
     return this.db.object('/config').valueChanges();
   }
   getPromos(): Observable<any> {
-    return this.db.list('/promos').valueChanges();
+    return this.db.object('/promos').valueChanges();
   }
   getProducts(): Observable<any> {
     return this.db.object('/products').valueChanges();

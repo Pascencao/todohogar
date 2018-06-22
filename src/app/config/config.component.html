@@ -8,16 +8,22 @@
     <ngb-tab title="Promos">
       <ng-template ngbTabContent>
         <div class="promo-wrapper">
-          <app-edit-create-promo *ngIf="addNewPromo" (saved)="promoSaved()"></app-edit-create-promo>
+          <div class="row">
+            <app-edit-create-promo class="col-12" *ngIf="addNewPromo" (saved)="promoSaved()" (cancelEv)="cancelEdit()" [promo]="editingPromo"></app-edit-create-promo>
+          </div>
           <button *ngIf="!addNewPromo" (click)="addNewPromo = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
-          <app-promo-config-item *ngFor="let promo of promos" [promo]="promo"></app-promo-config-item>
+          <div class="row">
+            <app-promo-config-item class="col-4" *ngFor="let promo of promos" [promo]="promo" (edit)="editPromo(promo)"></app-promo-config-item>
+          </div>
         </div>
       </ng-template>
     </ngb-tab>
     <ngb-tab title="Productos">
       <ng-template ngbTabContent>
         <div class="promo-wrapper">
-          <app-edit-create-product *ngIf="addNewProduct" (saved)="productSaved()" (cancelEv)="cancelEdit()" [product]="editingProduct"></app-edit-create-product>
+          <div class="row">
+            <app-edit-create-product class="col-12" *ngIf="addNewProduct" (saved)="productSaved()" (cancelEv)="cancelEdit()" [product]="editingProduct"></app-edit-create-product>
+          </div>
           <button *ngIf="!addNewProduct" (click)="addNewProduct = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
           <div class="row">
             <app-product-config-item *ngFor="let product of products" (edit)="editProduct(product)" [product]="product" class="col-4" ></app-product-config-item>

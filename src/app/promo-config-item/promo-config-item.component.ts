@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
@@ -7,6 +7,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
   styleUrls: ['./promo-config-item.component.scss']
 })
 export class PromoConfigItemComponent implements OnInit {
+  @Output() edit = new EventEmitter();
   @Input() promo: any;
   constructor(private storage: AngularFireStorage) {
   }
@@ -16,7 +17,9 @@ export class PromoConfigItemComponent implements OnInit {
     ref.getDownloadURL().subscribe(image => {
        this.promo.image = image;
     });
-    // console.log(this.promo.image);
   }
 
+  editItem() {
+    this.edit.emit();
+  }
 }
