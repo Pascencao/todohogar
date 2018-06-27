@@ -41,6 +41,7 @@ export class DashboardComponent implements OnInit {
         this.promos = promos;
       });
     this.productSrv.getProducts()
+      .map(this.setId)
       .map(products => {
         products.map(prod => {
           if (prod.labels) {
@@ -69,9 +70,16 @@ export class DashboardComponent implements OnInit {
     this.filtredProducts = labels.length ? _.filter(this.products, { labels: labels }) : this.products;
   }
   filterProductsListByQuery(query) {
-    console.log('on filtering', query);
     this.filtredProducts = query ? _.filter(this.products, prod => {
       return prod.title.toLowerCase().includes(query.toLowerCase());
     } ) : this.products;
+  }
+  setId(items) {
+    const newList = [];
+    _.forEach(items, (val, key) => {
+      val['id'] = key;
+      newList.push(val);
+    });
+    return newList;
   }
 }

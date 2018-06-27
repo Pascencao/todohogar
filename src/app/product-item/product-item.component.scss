@@ -1,6 +1,45 @@
 .card{
   position: relative;
+  cursor: pointer;
+  margin-bottom: 15px;
+  .overlay{
+    position: absolute;
+    background: rgba(0,0,0,.6);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    padding: 10px;
+    color: #fff;
+    text-align: left;
+    .badge-wrapper{
+      position: absolute;
+      bottom: 10px;
+    }
+    .actions{
+      width: 100%;
+      margin: 0;
+      button:first-child{
+        margin-right: 5px;
+      }
+    }
+  }
+  &:hover .overlay {
+    opacity: 1;
+  }
 }
+button{
+  text-align: center;
+  &.btn.btn-primary{
+    background: #30bed6;
+  }
+}
+
 img{
   width: 100%;
 }
@@ -17,6 +56,7 @@ img{
   min-height: 140px;
   max-height: 150px;
 }
+
 .discount{
   position: absolute;
   top: 0;

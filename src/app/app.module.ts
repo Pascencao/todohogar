@@ -30,6 +30,7 @@ import { FiltersComponent } from './filters/filters.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { MainConfigComponent } from './main-config/main-config.component';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     PromoCarouselComponent,
     FiltersComponent,
     ProductItemComponent,
-    MainConfigComponent
+    MainConfigComponent,
+    DetailsComponent
   ],
   exports: [
     RouterModule

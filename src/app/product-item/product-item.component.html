@@ -1,11 +1,18 @@
 <article class="card">
   <img class="card-img-top" [src]="product.image" alt="">
   <div class="card-body">
-    <h4>{{product.title}}</h4>
+    <h5>{{product.title}}</h5>
     <span class="price" *ngIf="product.price">{{product.price | currency}}</span>
-    <p>
-      <span class="badge badge-secondary" *ngFor="let lab of product.labels">{{lab}}</span>
-    </p>
+    <div class="overlay">
+      <div class="row actions">
+        <a class="btn btn-default col-9" [routerLink]="['/details',product.id]" title="Ver detalles del producto">Detalles</a>
+        <button type="button" class="btn btn-primary" title="Agregar al carro"><fa name="plus"></fa></button>
+      </div>
+      <p *ngIf="product.shortDescription">{{product.shortDescription}}</p>
+      <span class="badge-wrapper">
+        <span class="badge badge-info" *ngFor="let lab of product.labels">{{lab}}</span>
+      </span>
+    </div>
   </div>
   <span class="discount" *ngIf="product.discount">
     <span class="content">

@@ -13,11 +13,16 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-11">
+        <div class="col-10">
           <a *ngIf="site.site_name" class="navbar-brand" routerLink="index">{{site.site_name}}</a>
         </div>
-        <div class="col-1">
+        <div class="col-2">
           <ul class="social">
+            <li *ngIf="isLoggedin">
+              <a routerLink="auth/config">
+                <fa [name]="'cog'" [size]="1" [pull]="right"></fa>
+              </a>
+            </li>
             <li>
               <a *ngIf="!isLoggedin" routerLink="auth/login">
                 <fa [name]="'lock'" [size]="1" [pull]="right"></fa>

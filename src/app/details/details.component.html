@@ -1,0 +1,26 @@
+<section class="content" *ngIf="!loading" [ngClass]="{'with-description': product.shortDescription && product.description}">
+  <div class="row action">
+    <a routerLink="/index">
+      <fa [name]="'arrow-left'" [size]="'1'"></fa> Volver
+    </a>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <span class="img-wrapper">
+        <img [src]="product.image" alt="Imagen del producto">
+      </span>
+    </div>
+    <div class="col-8 product-detail">
+      <p class="badge-wrapper">
+        <span class="badge badge-info" *ngFor="let lab of product.labels">{{lab}}</span>
+      </p>
+      <h3>{{product.title}}</h3>
+      <p>{{product.shortDescription || product.description}}</p>
+      <button type="button" class="btn btn-info">Agregar al carro</button>
+    </div>
+  </div>
+  <p class="description" *ngIf="product.shortDescription && product.description">{{product.description}}</p>
+</section>
+<section class="content" *ngIf="loading">
+  <fa class="spin" [name]="'spinner'" spin="true" [size]="'5'"></fa>
+</section>

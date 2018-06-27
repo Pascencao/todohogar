@@ -1,0 +1,49 @@
+.img-wrapper{
+  border: 1px solid #ccc;
+  display: block;
+  img{
+    width: 100%;
+    padding: 2.5% 0;
+  }
+}
+.product-detail{
+  min-height: 150px;
+  position: relative;
+  button{
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+  }
+}
+.content{
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto 30px;
+  &.with-description{
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 15px;
+  }
+}
+.description{
+  margin-top: 15px;
+}
+.spin{
+  margin: 15px auto; 
+  display: block;
+  width: 80px;
+  color: #30bed6;
+}
+.action{
+  padding: 5px 10px;
+  background: #cccccc;
+  margin-bottom: 15px;
+  margin: 0 0 15px 0;
+}
+.badge-wrapper{
+  padding: 10px 0;
+
+  .badge{
+    margin-right: 5px;
+    font-size: 14px;
+  }
+}
