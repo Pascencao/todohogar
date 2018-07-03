@@ -18,6 +18,9 @@
         </div>
         <div class="col-2">
           <ul class="social">
+            <li>
+              <app-cart></app-cart>
+            </li>
             <li *ngIf="isLoggedin">
               <a routerLink="auth/config">
                 <fa [name]="'cog'" [size]="1" [pull]="right"></fa>

@@ -5,8 +5,8 @@
     <span class="price" *ngIf="product.price">{{product.price | currency}}</span>
     <div class="overlay">
       <div class="row actions">
-        <a class="btn btn-default col-9" [routerLink]="['/details',product.id]" title="Ver detalles del producto">Detalles</a>
-        <button type="button" class="btn btn-primary" title="Agregar al carro"><fa name="plus"></fa></button>
+        <button class="btn btn-default col-9" [routerLink]="['/details',product.id]" title="Ver detalles del producto">Detalles</button>
+        <button type="button" class="btn btn-primary" (click)="addToCart()" title="Agregar al carro"><fa [name]="isInCart ? 'minus' : 'plus'"></fa></button>
       </div>
       <p *ngIf="product.shortDescription">{{product.shortDescription}}</p>
       <span class="badge-wrapper">

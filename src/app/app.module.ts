@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { LocalStorageModule } from 'angular-2-local-storage';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -31,6 +32,9 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import { MainConfigComponent } from './main-config/main-config.component';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { DetailsComponent } from './details/details.component';
+import { CartComponent } from './cart/cart.component';
+import { EmailsSenderService } from './services/email-sender.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,8 @@ import { DetailsComponent } from './details/details.component';
     FiltersComponent,
     ProductItemComponent,
     MainConfigComponent,
-    DetailsComponent
+    DetailsComponent,
+    CartComponent
   ],
   exports: [
     RouterModule
@@ -55,6 +60,7 @@ import { DetailsComponent } from './details/details.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
     Angular2FontawesomeModule,
@@ -62,12 +68,17 @@ import { DetailsComponent } from './details/details.component';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    LocalStorageModule.withConfig({
+      prefix: 'commerce',
+      storageType: 'localStorage'
+    }),
     ColorPickerModule
   ],
   providers: [
     AuthService,
     ProductsService,
     PromosService,
+    EmailsSenderService,
     MainConfigService
   ],
   schemas: [

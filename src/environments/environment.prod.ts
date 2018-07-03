@@ -14,5 +14,11 @@ export const environment = {
     projectId: 'todohogar-10387',
     storageBucket: 'todohogar-10387.appspot.com',
     messagingSenderId: '687651680270'
+  },
+  emailConfig: {
+    user: 'postmaster@materialesga.herokuapp.com',
+    password: '428c68cb1a8bfe89f10b978fe9383b55-e44cc7c1-925e53c5',
+    host: 'smtp.mailgun.org',
+    ssl: true
   }
 };

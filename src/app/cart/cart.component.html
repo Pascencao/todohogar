@@ -1,0 +1,23 @@
+<span class="wrapper">
+  <button class="btn btn-link" type="button" (click)="openCart()" [ngClass]="{'opened': isOpen}">
+    <fa [name]="'shopping-cart'" [size]="1" [pull]="right"></fa>
+    <span class="hasItems" *ngIf="cart.length"></span>
+  </button>
+  <div class="overlay" *ngIf="isOpen">
+    <h5>Productos Elegidos</h5>
+    <ul>
+      <li *ngIf="!cartItems.length">No tienes productos seleccionados</li>
+      <li *ngFor="let prod of cartItems">
+        <span class="pull-left">
+          <a [routerLink]="['/details',prod.id]">
+            <strong>{{prod.title}}</strong>
+          </a>
+        </span>
+        <span class="pull-right">{{prod.price | currency}}</span>
+      </li>
+      <li class="totalPrice">{{total | currency}}</li>
+    </ul>
+    <button class="btn btn-info send" (click)="checkout()">Hacer Pedido</button>
+  </div>
+</span>
+<div class="bg-action" *ngIf="isOpen" (click)="isOpen = false"></div>
