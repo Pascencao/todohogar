@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-info pull-right" type="submit">Enviar</button>
+            <button class="btn btn-info pull-right" [disabled]="!name || !phone || !email" type="submit">Enviar</button>
     </div>
   </form>
 </ng-template>

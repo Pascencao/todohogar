@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import * as _ from 'lodash';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { MainConfigService } from '../services/main-config.service';
 
 @Component({
   selector: 'app-cart',
@@ -21,12 +22,19 @@ export class CartComponent implements OnInit, DoCheck {
     private localStorage: LocalStorageService,
     private productsSrv: ProductsService,
     private modalService: NgbModal,
-    private emailSrv: EmailsSenderService
-  ) { }
+    private emailSrv: EmailsSenderService,
+    private mainConfigSrv: MainConfigService
+  ) {
+    this.mainConfigSrv.getConfigs()
+      .subscribe((config: any) => {
+        this.siteConfig = config;
+      });
+  }
   isOpen: Boolean = false;
   cart: [any];
   total = 0;
   cartItems: Product[] = new Array();
+  siteConfig: any;
 
   ngOnInit() {
     this.cart = this.localStorage.get<[any]>('cart');
@@ -37,6 +45,7 @@ export class CartComponent implements OnInit, DoCheck {
   openCart() {
     this.isOpen = !this.isOpen;
     this.getProducts();
+    console.log(this.siteConfig);
   }
   getProducts() {
     const products = [];
@@ -56,13 +65,20 @@ export class CartComponent implements OnInit, DoCheck {
   }
   checkout() {
     this.modalService.open(this.content).result.then((result) => {
-      console.log(result);
+      this.emailSrv.sendEmail(this.cartItems, {
+        to: this.siteConfig.email,
+        from: result.email,
+        name: result.name,
+        contact: result.phone,
+        company: this.siteConfig.site_name
+      }).then(response => {
+        this.localStorage.set('cart', []);
+        this.isOpen = false;
+      }, error => {
+        console.log('FAILED...', error);
+      });
     }, (reason) => {
       console.log(reason);
     });
-    // this.emailSrv.sendEmail(this.cartItems)
-    // .subscribe(res => {
-    //   console.log(res)
-    // });
   }
 }
