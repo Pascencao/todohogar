@@ -6,7 +6,9 @@
     "ng": "ng",
     "start": "node server.js",
     "postinstall": "ng build --aot --prod",
-    "build": "ng build --aot --prod",
+    "build": "ng build --aot --prod --environment prod",
+    "build-gaston": "ng build --aot --prod --environment gaston",
+    "build-todohogar": "ng build --aot --prod --environment todohogar",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
