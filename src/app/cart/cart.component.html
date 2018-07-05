@@ -1,6 +1,6 @@
 <span class="wrapper">
   <button class="btn btn-link" type="button" (click)="openCart()" [ngClass]="{'opened': isOpen}">
-    <fa [name]="'shopping-cart'" [size]="1" [pull]="right"></fa>
+    <fa [name]="'shopping-cart'" [size]="1" [pull]="'right'"></fa>
     <span class="hasItems" *ngIf="cart.length"></span>
   </button>
   <div class="overlay" *ngIf="isOpen">
