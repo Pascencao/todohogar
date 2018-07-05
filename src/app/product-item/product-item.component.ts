@@ -21,7 +21,7 @@ export class ProductItemComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     const ref = this.storage.ref(this.product.image);
-    this.cart = this.localStorage.get('cart');
+    this.cart = this.localStorage.get('cart') || [];
     this.isInCart = _.includes(this.cart, this.product.id);
 
     ref.getDownloadURL().subscribe(image => {
@@ -29,7 +29,7 @@ export class ProductItemComponent implements OnInit, DoCheck {
     });
   }
   ngDoCheck() {
-    this.cart = this.localStorage.get('cart');
+    this.cart = this.localStorage.get('cart') || [];
     this.isInCart = _.includes(this.cart, this.product.id);
   }
   addToCart() {

@@ -12,7 +12,7 @@
             <app-edit-create-promo class="col-12" *ngIf="addNewPromo" (saved)="promoSaved()" (cancelEv)="cancelEdit()" [promo]="editingPromo"></app-edit-create-promo>
           </div>
           <button *ngIf="!addNewPromo" (click)="addNewPromo = true" class="btn btn-primary"><fa name="plus-circle"></fa></button> 
-          <div class="row">
+          <div class="row" *ngIf="promos.length">
             <app-promo-config-item class="col-4" *ngFor="let promo of promos" [promo]="promo" (edit)="editPromo(promo)"></app-promo-config-item>
           </div>
         </div>

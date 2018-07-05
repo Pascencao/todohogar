@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MainConfigService } from '../services/main-config.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import * as _ from 'lodash';
+import { Promo } from '../models/promo.interface';
+import { Product } from '../models/product.interface';
 
 @Component({
   selector: 'app-config',
@@ -9,8 +11,8 @@ import * as _ from 'lodash';
   styleUrls: ['./config.component.scss']
 })
 export class ConfigComponent implements OnInit {
-  promos: any[];
-  products: any[];
+  promos: Promo[];
+  products: Product[];
   editingProduct: any;
   editingPromo: any;
   addNewPromo: Boolean = false;
@@ -28,7 +30,7 @@ export class ConfigComponent implements OnInit {
   }
   promoSaved() {
     this.addNewPromo = false;
-    this.editingPromo = null;
+    this.editingPromo = new Promo();
     this.getPromos();
   }
   productSaved() {
@@ -70,11 +72,9 @@ export class ConfigComponent implements OnInit {
     this.addNewPromo = true;
   }
   setId (items) {
-    const newList = [];
-    _.forEach(items, (val, key) => {
+    return _.map(items, (val, key) => {
       val['id'] = key;
-      newList.push(val);
+      return val;
     });
-    return newList;
   }
 }

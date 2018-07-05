@@ -51,8 +51,8 @@ export class EditCreateProductComponent implements OnInit {
       this.prodSrv.updateProduct({
         id: this.product.id,
         title: this.title,
-        description: this.description,
-        shortDescription: this.shortDescription,
+        description: this.description || '',
+        shortDescription: this.shortDescription || '',
         price: this.price,
         image: this.product.image,
         labels: this.labelsList,

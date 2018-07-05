@@ -17,7 +17,7 @@
       </li>
       <li *ngIf="cartItems.length" class="totalPrice">{{total | currency}}</li>
     </ul>
-    <button class="btn btn-info send" (click)="checkout()">Hacer Pedido</button>
+    <button class="btn btn-info send" [disabled]="!cartItems.length" (click)="checkout()">Hacer Pedido</button>
   </div>
 </span>
 <div class="bg-action" *ngIf="isOpen" (click)="isOpen = false"></div>

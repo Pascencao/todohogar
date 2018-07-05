@@ -9,7 +9,7 @@ export class EmailsSenderService {
 
   constructor(
   ) {
-    emailjs.init('user_CNGJS3C30x3t5cljI0jQR');
+    emailjs.init(environment.emailConfig.key);
   }
 
   sendEmail(products, config) {
@@ -28,6 +28,7 @@ export class EmailsSenderService {
         + '<span>'
           + '<h6 style="margin: 0 0 5px; font-size: 16px;" >' + prod.title + '</h6>'
           + (prod.shortDescription ? '<p style="margin: 7px 0; font-size: 12px;" > ' + prod.shortDescription + ' </p>' : '')
+          + (prod.price ? '<span style="font-size: 10px; color: #30bed6;">$'+ prod.price + '</span>': '')
         + '</span>'
       + '</span>';
     return item;

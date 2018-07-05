@@ -24,7 +24,12 @@
   list-style-type:none; margin-bottom:0px; float:left; padding:0px; margin-left:0px;
   li{
     float:left;
-    a, button { padding:0 10px; font-size:13px; line-height:40px; color:#FFF;}
+    a, button, app-cart { 
+      height: 100%;
+      padding:0 10px; 
+      font-size:13px; 
+      line-height:40px; 
+      color:#FFF;}
   }
 }
 
@@ -35,3 +40,7 @@
     a,button { color:#FFF; }
   }
 }
+// app-cart{
+//   vertical-align: middle;
+//   margin-top: 6px;
+// }
