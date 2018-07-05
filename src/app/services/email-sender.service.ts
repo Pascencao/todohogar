@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { map } from 'lodash';
 import { Product } from '../models/product.interface';
+import * as emailjs from 'emailjs-com';
 
 @Injectable()
 export class EmailsSenderService {
