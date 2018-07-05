@@ -32,9 +32,8 @@ export class EditCreatePromoComponent implements OnInit {
 
   ngOnInit() {
     this.isEditing = !!(this.promo && this.promo.id);
-    console.log(this.promo);
     if (this.isEditing) {
-      this.getImage();
+      this.filePath = this.promo.image;
       this.title = this.promo.title;
       this.description = this.promo.description;
       this.price = this.promo.price;
@@ -42,12 +41,23 @@ export class EditCreatePromoComponent implements OnInit {
   }
   submit() {
     // do stuff w/my uploaded file
-    this.promoSrv.addPromo({
-      title: this.title,
-      description: this.description,
-      price: this.price,
-      image: this.filePath,
-    });
+    if (this.isEditing) {
+      this.promoSrv.updatePromo({
+        id: this.promo.id,
+        title: this.title,
+        description: this.description,
+        price: this.price || null,
+        image: this.promo.image
+      });
+    } else {
+
+      this.promoSrv.addPromo({
+        title: this.title,
+        description: this.description,
+        price: this.price || null,
+        image: this.filePath,
+      });
+    }
     this.saved.emit();
   }
   cancel() {
@@ -63,9 +73,6 @@ export class EditCreatePromoComponent implements OnInit {
     const file = event.target.files[0];
     this.filePath = `promo/images/${file.name}`;
     const task = this.storage.upload(this.filePath, file);
-    // observe percentage changes
-    this.uploadPercent = task.percentageChanges();
-    // get notified when the download URL is available
     this.downloadURL = task.downloadURL();
   }
 }

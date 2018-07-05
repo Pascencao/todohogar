@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { PromosService } from '../services/promos.service';
 
 @Component({
   selector: 'app-promo-config-item',
@@ -9,7 +10,10 @@ import { AngularFireStorage } from 'angularfire2/storage';
 export class PromoConfigItemComponent implements OnInit {
   @Output() edit = new EventEmitter();
   @Input() promo: any;
-  constructor(private storage: AngularFireStorage) {
+  constructor(
+    private storage: AngularFireStorage,
+    private promoSrv: PromosService
+  ) {
   }
 
   ngOnInit() {
@@ -21,5 +25,8 @@ export class PromoConfigItemComponent implements OnInit {
 
   editItem() {
     this.edit.emit();
+  }
+  delete() {
+    this.promoSrv.delete(this.promo.id);
   }
 }

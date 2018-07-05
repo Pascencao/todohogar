@@ -1,5 +1,6 @@
 <div class="row promo-item card">
   <button class="edit btn btn-outline-dark" (click)="editItem()"><fa name="edit" [size]="1"></fa></button>
+  <button class="remove btn btn-outline-dark " (click)="delete()"><fa name="trash" [size]="1"></fa></button>
   <img class="card-img-top" [src]="promo.image" alt="">
   <div class="card-body">
     <h5 class="card-title">{{promo.title}} - {{promo.price| currency}}</h5>

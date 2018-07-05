@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, DoCheck, Input } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { LocalStorageService } from 'angular-2-local-storage';
 import { Product } from '../models/product.interface';
@@ -9,9 +9,10 @@ import * as _ from 'lodash';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss']
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent implements OnInit, DoCheck {
   @Input() product: Product;
   isInCart: Boolean = false;
+  cart: any[];
 
   constructor(
     private storage: AngularFireStorage,
@@ -20,12 +21,16 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit() {
     const ref = this.storage.ref(this.product.image);
-    const cart = this.localStorage.get('cart');
-    this.isInCart = _.includes(cart, this.product.id);
+    this.cart = this.localStorage.get('cart');
+    this.isInCart = _.includes(this.cart, this.product.id);
 
     ref.getDownloadURL().subscribe(image => {
       this.product.image = image;
     });
+  }
+  ngDoCheck() {
+    this.cart = this.localStorage.get('cart');
+    this.isInCart = _.includes(this.cart, this.product.id);
   }
   addToCart() {
     const cart = this.localStorage.get<[any]>('cart') || [];

@@ -28,10 +28,12 @@ export class ConfigComponent implements OnInit {
   }
   promoSaved() {
     this.addNewPromo = false;
+    this.editingPromo = null;
     this.getPromos();
   }
   productSaved() {
     this.addNewProduct = false;
+    this.editingProduct = null;
     this.getProducts();
   }
   getConfig() {

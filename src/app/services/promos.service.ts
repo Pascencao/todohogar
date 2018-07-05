@@ -9,15 +9,20 @@ export class PromosService {
   getPromos() {
     return this.db.list('/promos').valueChanges();
   }
-  getPromoById() {
-    return this.db.object('/promos/2').valueChanges();
+  getPromoById(id) {
+    return this.db.object(`/promos/${id}`).valueChanges();
   }
   addPromo(promo) {
-    console.log(promo);
     return this.db.list('/promos').push(promo);
   }
   uploadImage(upload: any) {
     const storage = firebase.storage().ref();
     return storage.child(`/uploads/${upload.file.name}`).put(upload.file);
+  }
+  updatePromo(promo) {
+    return this.db.object(`/promos/${promo.id}`).update(promo);
+  }
+  delete(id) {
+    return this.db.object(`/promos/${id}`).remove();
   }
 }

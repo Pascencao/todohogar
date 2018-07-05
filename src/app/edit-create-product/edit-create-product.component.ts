@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angu
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs/Observable';
 import { ProductsService } from '../services/products.service';
+import { Product } from '../models/product.interface';
 
 @Component({
   selector: 'app-edit-create-product',
@@ -12,17 +13,7 @@ export class EditCreateProductComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
   @Output() saved = new EventEmitter();
   @Output() cancelEv = new EventEmitter();
-  @Input() product: {
-    id: string,
-    name: string,
-    title: string,
-    description: string,
-    discount: string,
-    shortDescription: string,
-    price: string,
-    image: string,
-    labels: [string],
-  };
+  @Input() product: Product;
   labels: string;
   filePath: string;
   title: string;
@@ -33,7 +24,7 @@ export class EditCreateProductComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
   labelsList = [];
-  discount: String;
+  discount: number;
   isEditing: Boolean = false;
 
   constructor(private storage: AngularFireStorage, private prodSrv: ProductsService) { }
@@ -41,7 +32,7 @@ export class EditCreateProductComponent implements OnInit {
   ngOnInit() {
     this.isEditing = !!(this.product && this.product.id);
     if (this.isEditing) {
-      this.getImage();
+      this.filePath = this.product.image;
       this.title = this.product.title;
       this.description = this.product.description;
       this.shortDescription = this.product.shortDescription;
@@ -63,10 +54,10 @@ export class EditCreateProductComponent implements OnInit {
         description: this.description,
         shortDescription: this.shortDescription,
         price: this.price,
-        image: this.filePath,
+        image: this.product.image,
         labels: this.labelsList,
-        discount: this.discount
-      })
+        discount: this.discount || null
+      });
     } else {
       this.prodSrv.addProduct({
         title: this.title,
@@ -75,7 +66,7 @@ export class EditCreateProductComponent implements OnInit {
         price: this.price,
         image: this.filePath,
         labels: this.labelsList,
-        discount: this.discount
+        discount: this.discount || null
       });
     }
 

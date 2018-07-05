@@ -14,8 +14,14 @@
     right: 5px;
     display: none;
   }
+  .remove{
+    position: absolute;
+    top: 5px;
+    right: 55px;
+    display: none;
+  }
   &:hover{
-    .edit{
+    .edit, .remove{
       display: block;
     }
   }

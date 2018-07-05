@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-product-config-item',
@@ -19,7 +20,7 @@ export class ProductConfigItemComponent implements OnInit {
     image: string,
     labels: [string],
   };
-  constructor(private storage: AngularFireStorage) {
+  constructor(private storage: AngularFireStorage, private prodSrv: ProductsService) {
   }
 
   ngOnInit() {
@@ -29,8 +30,10 @@ export class ProductConfigItemComponent implements OnInit {
       this.product.image = image;
     });
   }
-  editItem () {
+  editItem() {
     this.edit.emit();
   }
-
+  delete() {
+    this.prodSrv.delete(this.product.id);
+  }
 }

@@ -14,18 +14,21 @@ export class EmailsSenderService {
   sendEmail(products, config) {
     let content = '';
     map(products, (prod, index) => {
-      content += !(index % 2) ? '<tr style="margin-top: 15px; border-top: 1px solid #30bed6;">'
-       + this.assambleProduct(prod) : this.assambleProduct(prod) + '</tr>';
+      // content += !(index % 2) ? '<tr style="margin-top: 15px; border-top: 1px solid #30bed6;">'
+      //  + this.assambleProduct(prod) : this.assambleProduct(prod) + '</tr>';
+      content += this.assambleProduct(prod);
     });
     config.content = content;
     return emailjs.send('mailgun', 'checkout', config)
   }
   assambleProduct(prod: Product) {
-    const item = '<td style="border: 1px solid #444; padding: 5px; background: #fff;">'
-      + '<img style="float: left; width: 30%; margin-right: 10px;" src="' + prod.image + '" alt="" />'
-      + '<h6 style="margin: 0 0 5px; font-size: 16px;" >' + prod.title + '</h6>'
-      + (prod.shortDescription ? '<p style="margin: 7px 0; font-size: 12px;" > ' + prod.shortDescription + ' </p>' : '')
-      + '</td>';
+    const item = '<span style="display: block; width: 100%; margin-bottom: 10px; border: 1px solid #444; padding: 5px; background: #fff;">'
+        + '<img style="float: left; width: 30%; margin-right: 10px;" src="' + prod.image + '" alt="" />'
+        + '<span>'
+          + '<h6 style="margin: 0 0 5px; font-size: 16px;" >' + prod.title + '</h6>'
+          + (prod.shortDescription ? '<p style="margin: 7px 0; font-size: 12px;" > ' + prod.shortDescription + ' </p>' : '')
+        + '</span>'
+      + '</span>';
     return item;
   }
 }

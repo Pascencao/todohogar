@@ -1,5 +1,6 @@
 <div class="card">
   <button class="edit btn btn-outline-dark" (click)="editItem()"><fa name="edit" [size]="1"></fa></button>
+  <button class="remove btn btn-outline-dark " (click)="delete()"><fa name="trash" [size]="1"></fa></button>
   <img class="card-img-top" [src]="product.image" alt="">
   <div class="card-body">
     <h4 class="card-title">{{product.title}} - {{product.price | currency}} {{product.discount ? ' - ' + product.discount + '%' : '' }}</h4>

@@ -15,7 +15,7 @@
         </span>
         <span class="pull-right">{{prod.price | currency}}</span>
       </li>
-      <li class="totalPrice">{{total | currency}}</li>
+      <li *ngIf="cartItems.length" class="totalPrice">{{total | currency}}</li>
     </ul>
     <button class="btn btn-info send" (click)="checkout()">Hacer Pedido</button>
   </div>
