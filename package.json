@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "postinstall": "ng build --aot --prod",
-    "build": "ng build --aot --prod",
+    "postinstall": "ng build --aot --gaston",
+    "build": "ng build --aot --gaston",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
