@@ -31,24 +31,22 @@ export class CartComponent implements OnInit, DoCheck {
       });
   }
   isOpen: Boolean = false;
-  cart: [any];
+  cart: any[];
   total = 0;
   cartItems: Product[] = new Array();
   siteConfig: any;
 
   ngOnInit() {
-    this.cart = this.localStorage.get<[any]>('cart');
+    this.cart = this.localStorage.get<[any]>('cart') || [];
   }
   ngDoCheck() {
-    this.cart = this.localStorage.get<[any]>('cart');
+    this.cart = this.localStorage.get<[any]>('cart') || [];
   }
   openCart() {
     this.isOpen = !this.isOpen;
     this.getProducts();
-    console.log(this.siteConfig);
   }
   getProducts() {
-    const products = [];
     this.cartItems = [];
     _.map(this.cart, id => {
       this.productsSrv.getProductById(id)
@@ -71,14 +69,10 @@ export class CartComponent implements OnInit, DoCheck {
         name: result.name,
         contact: result.phone,
         company: this.siteConfig.site_name
-      }).then(response => {
+      }).then(() => {
         this.localStorage.set('cart', []);
         this.isOpen = false;
-      }, error => {
-        console.log('FAILED...', error);
       });
-    }, (reason) => {
-      console.log(reason);
     });
   }
 }
