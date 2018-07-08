@@ -35,6 +35,7 @@ import { DetailsComponent } from './details/details.component';
 import { CartComponent } from './cart/cart.component';
 import { EmailsSenderService } from './services/email-sender.service';
 import { HttpModule } from '@angular/http';
+import { IsLoggedInGuard } from './is-logged-in.guard';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { HttpModule } from '@angular/http';
     ProductsService,
     PromosService,
     EmailsSenderService,
-    MainConfigService
+    MainConfigService,
+    IsLoggedInGuard
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

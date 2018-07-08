@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ConfigComponent } from './config/config.component';
 import { DetailsComponent } from './details/details.component';
+import { IsLoggedInGuard } from './is-logged-in.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -11,6 +12,6 @@ export const routes: Routes = [
     { path: 'details/:id', component: DetailsComponent },
     { path: 'auth', children: [
         { path: 'login', component: LoginComponent },
-        { path: 'config', component: ConfigComponent }
+        { path: 'config', component: ConfigComponent, canActivate: [IsLoggedInGuard] }
     ]}
 ];
